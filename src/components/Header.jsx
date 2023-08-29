@@ -129,9 +129,9 @@ function DesktopNavigation(props) {
 // used to transition between light and dark mode
 function ModeToggle() {
   function disableTransitionsTemporarily() {
-    document.documentElement.classList.add('[&_*]:!transition-none')
+    document.documentElement.classList.add('transition-none')
     window.setTimeout(() => {
-      document.documentElement.classList.remove('[&_*]:!transition-none')
+      document.documentElement.classList.remove('transition-none')
     }, 0)
   }
 
@@ -162,11 +162,8 @@ function ModeToggle() {
   )
 }
 
-// helper to help with scaling of avatar when user scrolls down
 function scrollHeight(number, a, b) {
-  let min = Math.min(a, b)
-  let max = Math.max(a, b)
-  return Math.min(Math.max(number, min), max)
+  return Math.min(Math.max(number, a), b)
 }
 
 function AvatarContainer({ className, ...props }) {
@@ -264,31 +261,25 @@ export function Header() {
         return
       }
 
-      let fromScale = 1
-      let toScale = 36 / 64
-      let fromX = 0
-      let toX = 2 / 16
+      const scrollY = downDelay - window.scrollY
+      const scrollFactor = scrollY / downDelay
 
-      let scrollY = downDelay - window.scrollY
-
-      let scale = (scrollY * (fromScale - toScale)) / downDelay + toScale
-      scale = scrollHeight(scale, fromScale, toScale)
-      console.log({ scale })
-
-      let x = (scrollY * (fromX - toX)) / downDelay + toX
-      x = scrollHeight(x, fromX, toX)
+      const scale = 1 + scrollFactor * (36 / 64 - 1)
+      const x = (scrollFactor * 2) / 16
 
       setProperty(
         '--avatar-image-transform',
         `translate3d(${x}rem, 0, 0) scale(${scale})`
       )
 
-      let borderScale = 1 / (toScale / scale)
-      let borderX = (-toX + x) * borderScale
-      let borderTransform = `translate3d(${borderX}rem, 0, 0) scale(${borderScale})`
+      const borderScale = 1 / scale
+      const borderX = -x * borderScale
 
-      setProperty('--avatar-border-transform', borderTransform)
-      setProperty('--avatar-border-opacity', scale === toScale ? 1 : 0)
+      setProperty(
+        '--avatar-border-transform',
+        `translate3d(${borderX}rem, 0, 0) scale(${borderScale})`
+      )
+      setProperty('--avatar-border-opacity', scale === 36 / 64 ? 1 : 0)
     }
 
     function updateStyles() {
