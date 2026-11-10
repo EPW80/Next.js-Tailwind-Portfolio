@@ -66,7 +66,7 @@ function ScreenshotFrame({
     return (
       <div
         className={clsx(
-          'relative w-full overflow-hidden rounded-2xl ring-1 ring-zinc-900/[.06] dark:ring-white/10',
+          'relative min-w-0 w-full max-w-full overflow-hidden rounded-2xl ring-1 ring-zinc-900/[.06] dark:ring-white/10',
           className
         )}
       >
@@ -74,7 +74,7 @@ function ScreenshotFrame({
           src={screenshot}
           alt={`${title} screenshot`}
           className="h-full w-full object-cover"
-          sizes="(min-width: 1024px) 40vw, 100vw"
+          sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"
         />
       </div>
     )
@@ -83,12 +83,12 @@ function ScreenshotFrame({
   return (
     <div
       className={clsx(
-        'flex w-full items-center justify-center bg-[repeating-linear-gradient(135deg,theme(colors.primaryText.100)_0_10px,theme(colors.white)_10px_20px)] font-mono text-primaryText-400 ring-1 ring-zinc-900/[.06] dark:bg-[repeating-linear-gradient(135deg,theme(colors.primaryText.800)_0_10px,theme(colors.primaryText.900)_10px_20px)] dark:text-primaryText-500 dark:ring-white/10',
+        'flex min-w-0 w-full max-w-full items-center justify-center overflow-hidden bg-[repeating-linear-gradient(135deg,theme(colors.primaryText.100)_0_10px,theme(colors.white)_10px_20px)] font-mono text-primaryText-400 ring-1 ring-zinc-900/[.06] dark:bg-[repeating-linear-gradient(135deg,theme(colors.primaryText.800)_0_10px,theme(colors.primaryText.900)_10px_20px)] dark:text-primaryText-500 dark:ring-white/10',
         className
       )}
       aria-hidden="true"
     >
-      <span className={clsx('px-4 text-center', labelClassName)}>
+      <span className={clsx('px-4 text-center break-words', labelClassName)}>
         {title} screenshot
       </span>
     </div>
@@ -97,21 +97,25 @@ function ScreenshotFrame({
 
 function FeaturedProject({ project }) {
   return (
-    <article className="grid grid-cols-1 items-center gap-12 rounded-3xl bg-primaryText-50 py-6 pl-6 pr-6 ring-1 ring-zinc-900/5 dark:bg-primaryText-800/40 dark:ring-white/10 lg:grid-cols-[7fr_5fr] lg:pr-12">
+    <article className="grid min-w-0 grid-cols-1 items-stretch gap-6 rounded-3xl bg-primaryText-50 p-4 ring-1 ring-zinc-900/5 dark:bg-primaryText-800/40 dark:ring-white/10 sm:gap-8 sm:p-6 md:gap-10 lg:grid-cols-[7fr_5fr] lg:items-center lg:gap-12 lg:py-6 lg:pl-6 lg:pr-12">
       <ScreenshotFrame
         title={project.title}
         screenshot={project.screenshot}
         className="aspect-[16/10] rounded-2xl"
       />
-      <div>
+      <div className="min-w-0">
         <Card.Eyebrow decorate>Featured project</Card.Eyebrow>
-        <h2 className="mt-3 text-3xl font-bold tracking-tight text-primaryText-800 dark:text-primaryText-100">
+        <h2 className="mt-3 text-2xl font-bold tracking-tight text-primaryText-800 dark:text-primaryText-100 sm:text-3xl">
           {project.title}
         </h2>
         <p className="mt-4 text-base text-primaryText-600 [text-wrap:pretty] dark:text-primaryText-400">
           {project.description}
         </p>
-        <Button variant="primary" href={project.href} className="mt-8">
+        <Button
+          variant="primary"
+          href={project.href}
+          className="mt-6 min-h-11 w-full touch-manipulation sm:mt-8 sm:w-auto"
+        >
           View on GitHub
           <ChevronRightIcon className="h-4 w-4" />
         </Button>
@@ -124,31 +128,33 @@ function GalleryProject({ project }) {
   return (
     <Card
       as="li"
-      className="-m-4 rounded-[20px] p-4 transition hover:bg-primaryText-200/50 dark:hover:bg-primaryText-800/50"
+      className="min-w-0 w-full rounded-[20px] p-3 transition hover:bg-primaryText-200/50 dark:hover:bg-primaryText-800/50 sm:-m-4 sm:p-4"
     >
-      <Link href={project.href}>
-        <span className="absolute inset-0 z-20 rounded-[20px]" />
+      <Link
+        href={project.href}
+        className="absolute inset-0 z-20 rounded-[20px] touch-manipulation"
+      >
         <span className="sr-only">View {project.title} on GitHub</span>
       </Link>
-      <div className="relative w-full">
+      <div className="relative w-full min-w-0">
         <ScreenshotFrame
           title={project.title}
           screenshot={project.screenshot}
           className="aspect-[16/10] rounded-xl"
           labelClassName="text-[11px]"
         />
-        <div className="absolute left-4 -bottom-6 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+        <div className="absolute left-3 -bottom-5 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 sm:left-4 sm:-bottom-6 sm:h-12 sm:w-12">
           <Image
             src={project.logo}
             alt=""
-            className="h-7 w-7"
+            className="h-6 w-6 sm:h-7 sm:w-7"
             unoptimized
             width={28}
             height={28}
           />
         </div>
       </div>
-      <h3 className="relative z-10 mt-10 text-base font-semibold text-primaryText-800 dark:text-primaryText-100">
+      <h3 className="relative z-10 mt-9 text-base font-semibold text-primaryText-800 dark:text-primaryText-100 sm:mt-10">
         {project.title}
       </h3>
       <p className="relative z-10 mt-2 line-clamp-3 text-sm text-primaryText-600 dark:text-primaryText-400">
@@ -172,15 +178,17 @@ export default function Projects() {
         title="Past Projects"
         intro="These are some of the projects that I'm most proud of. I've built them to learn new technologies, or to solve a problem that I've encountered."
       >
-        <FeaturedProject project={featured} />
-        <ul
-          role="list"
-          className="mt-20 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {gallery.map((project) => (
-            <GalleryProject key={project.title} project={project} />
-          ))}
-        </ul>
+        <div className="min-w-0 overflow-x-clip">
+          <FeaturedProject project={featured} />
+          <ul
+            role="list"
+            className="mt-12 grid min-w-0 grid-cols-1 gap-x-8 gap-y-10 sm:mt-16 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-12 lg:mt-20 lg:grid-cols-3"
+          >
+            {gallery.map((project) => (
+              <GalleryProject key={project.title} project={project} />
+            ))}
+          </ul>
+        </div>
       </SimpleLayout>
     </>
   )
