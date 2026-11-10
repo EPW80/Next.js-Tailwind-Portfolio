@@ -1,6 +1,9 @@
 import Image from 'next/image'
 import Head from 'next/head'
+import Link from 'next/link'
+import clsx from 'clsx'
 
+import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import siteMetadata from '@/data/siteMetadata'
@@ -11,6 +14,7 @@ import supaSnacksLogo from '@/images/projects/supaSnacks.svg'
 import payByFonieLogo from '@/images/projects/payByFonie.svg'
 
 // TODO: Add your own projects here. Logo images from https://heroicons.com/
+// Optional `screenshot` (static import) can replace the tasteful placeholder frames.
 const projectsData = [
   {
     title: 'Shop-shop',
@@ -38,18 +42,126 @@ const projectsData = [
   },
 ]
 
-function LinkIcon(props) {
+function ChevronRightIcon(props) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
       <path
-        d="M15.712 11.823a.75.75 0 1 0 1.06 1.06l-1.06-1.06Zm-4.95 1.768a.75.75 0 0 0 1.06-1.06l-1.06 1.06Zm-2.475-1.414a.75.75 0 1 0-1.06-1.06l1.06 1.06Zm4.95-1.768a.75.75 0 1 0-1.06 1.06l1.06-1.06Zm3.359.53-.884.884 1.06 1.06.885-.883-1.061-1.06Zm-4.95-2.12 1.414-1.415L12 6.344l-1.415 1.413 1.061 1.061Zm0 3.535a2.5 2.5 0 0 1 0-3.536l-1.06-1.06a4 4 0 0 0 0 5.656l1.06-1.06Zm4.95-4.95a2.5 2.5 0 0 1 0 3.535L17.656 12a4 4 0 0 0 0-5.657l-1.06 1.06Zm1.06-1.06a4 4 0 0 0-5.656 0l1.06 1.06a2.5 2.5 0 0 1 3.536 0l1.06-1.06Zm-7.07 7.07.176.177 1.06-1.06-.176-.177-1.06 1.06Zm-3.183-.353.884-.884-1.06-1.06-.884.883 1.06 1.06Zm4.95 2.121-1.414 1.414 1.06 1.06 1.415-1.413-1.06-1.061Zm0-3.536a2.5 2.5 0 0 1 0 3.536l1.06 1.06a4 4 0 0 0 0-5.656l-1.06 1.06Zm-4.95 4.95a2.5 2.5 0 0 1 0-3.535L6.344 12a4 4 0 0 0 0 5.656l1.06-1.06Zm-1.06 1.06a4 4 0 0 0 5.657 0l-1.061-1.06a2.5 2.5 0 0 1-3.535 0l-1.061 1.06Zm7.07-7.07-.176-.177-1.06 1.06.176.178 1.06-1.061Z"
-        fill="currentColor"
+        d="M6.75 5.75 9.25 8l-2.5 2.25"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        stroke="currentColor"
       />
     </svg>
   )
 }
 
+function ScreenshotFrame({
+  title,
+  screenshot,
+  className,
+  labelClassName = 'text-xs',
+}) {
+  if (screenshot) {
+    return (
+      <div
+        className={clsx(
+          'relative w-full overflow-hidden rounded-2xl ring-1 ring-zinc-900/[.06] dark:ring-white/10',
+          className
+        )}
+      >
+        <Image
+          src={screenshot}
+          alt={`${title} screenshot`}
+          className="h-full w-full object-cover"
+          sizes="(min-width: 1024px) 40vw, 100vw"
+        />
+      </div>
+    )
+  }
+
+  return (
+    <div
+      className={clsx(
+        'flex w-full items-center justify-center bg-[repeating-linear-gradient(135deg,theme(colors.primaryText.100)_0_10px,theme(colors.white)_10px_20px)] font-mono text-primaryText-400 ring-1 ring-zinc-900/[.06] dark:bg-[repeating-linear-gradient(135deg,theme(colors.primaryText.800)_0_10px,theme(colors.primaryText.900)_10px_20px)] dark:text-primaryText-500 dark:ring-white/10',
+        className
+      )}
+      aria-hidden="true"
+    >
+      <span className={clsx('px-4 text-center', labelClassName)}>
+        {title} screenshot
+      </span>
+    </div>
+  )
+}
+
+function FeaturedProject({ project }) {
+  return (
+    <article className="grid grid-cols-1 items-center gap-12 rounded-3xl bg-primaryText-50 py-6 pl-6 pr-6 ring-1 ring-zinc-900/5 dark:bg-primaryText-800/40 dark:ring-white/10 lg:grid-cols-[7fr_5fr] lg:pr-12">
+      <ScreenshotFrame
+        title={project.title}
+        screenshot={project.screenshot}
+        className="aspect-[16/10] rounded-2xl"
+      />
+      <div>
+        <Card.Eyebrow decorate>Featured project</Card.Eyebrow>
+        <h2 className="mt-3 text-3xl font-bold tracking-tight text-primaryText-800 dark:text-primaryText-100">
+          {project.title}
+        </h2>
+        <p className="mt-4 text-base text-primaryText-600 [text-wrap:pretty] dark:text-primaryText-400">
+          {project.description}
+        </p>
+        <Button variant="primary" href={project.href} className="mt-8">
+          View on GitHub
+          <ChevronRightIcon className="h-4 w-4" />
+        </Button>
+      </div>
+    </article>
+  )
+}
+
+function GalleryProject({ project }) {
+  return (
+    <Card
+      as="li"
+      className="-m-4 rounded-[20px] p-4 transition hover:bg-primaryText-200/50 dark:hover:bg-primaryText-800/50"
+    >
+      <Link href={project.href}>
+        <span className="absolute inset-0 z-20 rounded-[20px]" />
+        <span className="sr-only">View {project.title} on GitHub</span>
+      </Link>
+      <div className="relative w-full">
+        <ScreenshotFrame
+          title={project.title}
+          screenshot={project.screenshot}
+          className="aspect-[16/10] rounded-xl"
+          labelClassName="text-[11px]"
+        />
+        <div className="absolute left-4 -bottom-6 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+          <Image
+            src={project.logo}
+            alt=""
+            className="h-7 w-7"
+            unoptimized
+            width={28}
+            height={28}
+          />
+        </div>
+      </div>
+      <h3 className="relative z-10 mt-10 text-base font-semibold text-primaryText-800 dark:text-primaryText-100">
+        {project.title}
+      </h3>
+      <p className="relative z-10 mt-2 line-clamp-3 text-sm text-primaryText-600 dark:text-primaryText-400">
+        {project.description}
+      </p>
+      <Card.Cta>View repo</Card.Cta>
+    </Card>
+  )
+}
+
 export default function Projects() {
+  const [featured, ...gallery] = projectsData
+
   return (
     <>
       <Head>
@@ -60,35 +172,14 @@ export default function Projects() {
         title="Past Projects"
         intro="These are some of the projects that I'm most proud of. I've built them to learn new technologies, or to solve a problem that I've encountered."
       >
+        <FeaturedProject project={featured} />
         <ul
           role="list"
-          className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-20 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {projectsData.map((project) => {
-            console.log(project)
-            return (
-              <Card as="li" key={project.title}>
-                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                  <Image
-                    src={project.logo}
-                    alt=""
-                    className="h-8 w-8"
-                    unoptimized
-                    width={32}
-                    height={32}
-                  />
-                </div>
-                <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                  <Card.Link href={project.href}>{project.title}</Card.Link>
-                </h2>
-                <Card.Description>{project.description}</Card.Description>
-                <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
-                  <LinkIcon className="h-6 w-6 flex-none" />
-                  <span className="ml-2">{project.title}</span>
-                </p>
-              </Card>
-            )
-          })}
+          {gallery.map((project) => (
+            <GalleryProject key={project.title} project={project} />
+          ))}
         </ul>
       </SimpleLayout>
     </>
