@@ -1,30 +1,26 @@
-import { GiBanana } from 'react-icons/gi'
-import { RiShoppingBagLine, RiCarLine } from 'react-icons/ri'
-import { IoFastFoodOutline } from 'react-icons/io5'
-
 const siteMetadata = {
-  title: 'Nextjs Tailwind Portfolio',
+  title: 'Erik Williams — Full-Stack & Backend Software Engineer',
   description:
-    'This is where you can learn about me and my work. I am a full stack developer and student at California State University Fullerton.',
+    'Full-stack engineer with a B.S. in Computer Science, building web apps and backend services in React, Next.js, TypeScript, Python, and Go.',
   author: 'Erik Williams',
-  authorHeadline: 'Full Stack Developer, solar panel cleaner.',
-  authorAbout: 'Hello, I am Erik Williams, a full stack developer. I also like cleaning solar panels.',
+  authorHeadline: 'Full-Stack & Backend Software Engineer',
+  authorAbout:
+    'Full-stack engineer with a B.S. in Computer Science, building web apps and backend services in React, Next.js, TypeScript, Python, and Go. Lead contract developer for a WooCommerce e-commerce business, owning the storefront, third-party API integrations, and a Go payout service backed by 299 automated tests. Deploys on AWS with Docker and CI/CD, from database design through production.',
   authorAboutExtended:
-    "Erik is an American-born, living in South East Los Angeles. \n \n In his personal life, Erik is an avid martial arts and programmer nut. He enjoys cleaning solar panels in his sparetime as well as practice martial arts. When he's not coding or exercising, Erik can be found playing PC videogames. I also like being a dad.",
+    'Erik P. Williams is a full-stack and backend software engineer based in Huntington Park, CA.\n\nHe builds web apps and backend services in React, Next.js, TypeScript, Python, and Go. As lead contract developer for a WooCommerce e-commerce business, he owns the storefront, third-party API integrations, and a Go payout service backed by 299 automated tests. His work spans database design through production deployment on AWS with Docker and CI/CD.\n\nHe holds a B.S. in Computer Science from California State University, Fullerton, and a Full-Stack Web Development Certificate from UCLA Extension.',
   socials: {
     github: 'https://github.com/EPW80',
-    linkedin: 'https://www.linkedin.com/in/erik-parra-williams/',
+    linkedin: 'https://www.linkedin.com/in/erikparrawilliams',
   },
   email: 'erikparrawilliams@tutanota.com',
-  phoneNumber: '123-456-7890',
+  phoneNumber: '(323) 559-1224',
   contactTitle: 'Get in touch',
   contactSubtitle:
-    'I am currently making amazing websites. If you want to get in touch, please use the form below.',
+    'Open to full-stack and backend engineering conversations. Use the form below or reach out by email.',
   analytics: {
-    plausibleDataDomain: 'https://epw80.github.io/react-portfolio-master/', // e.g. tailwind-nextjs-starter-blog.vercel.app
-    googleAnalyticsId: 'G-XXXXXXX', // e.g. UA-000000-2 or G-XXXXXXX
+    plausibleDataDomain: 'https://epw80.github.io/react-portfolio-master/',
+    googleAnalyticsId: 'G-XXXXXXX',
   },
-  // TODO: Add the name of the navbar items and the corresponding page. Used in the Header and Footer components.
   siteNavLinks: [
     {
       name: 'Home',
@@ -38,10 +34,6 @@ const siteMetadata = {
       name: 'Experience',
       href: '/experience',
     },
-    // {
-    //   name: 'Offerings',
-    //   href: '/offerings',
-    // },
     {
       name: 'Contact',
       href: '/contact',
@@ -63,7 +55,6 @@ const siteMetadata = {
       testimonialAuthorTitle: 'CEO at Deatles, Inc.',
       imgUrl:
         'https://images.unsplash.com/photo-1594392175511-30eca83d51c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80',
-      // imageAttribution: 'Photo by @dan__burton on Unsplash',
     },
     {
       title: 'Audio Engineering',
@@ -74,48 +65,91 @@ const siteMetadata = {
       testimonialAuthorTitle: '',
       imgUrl:
         'https://images.unsplash.com/photo-1532460734809-e7f8475ca917?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3237&q=80',
-      // imageAttribution: 'Photo by @juanmanunez on Unsplash',
     },
   ],
   testimonial: {
     comment:
-      '“Erik is renowned for his outstanding skills in maintaining the cleanliness and efficiency of solar panels.”',
-    author: 'Elon Musk',
-    authorTitle: 'CEO at Dumpster, Inc.',
+      '“Builds end-to-end systems—from React and Next.js frontends to Go and Python services—with solid testing and AWS deployments.”',
+    author: 'From the resume summary',
+    authorTitle: 'Full-Stack & Backend Software Engineer',
     imgUrl:
       'https://images.unsplash.com/photo-1579047917338-a6a69144fe63?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80',
-    // imageAttribution: 'Photo by @johanemanuel on Unsplash',
   },
   featureSection: {
-    title: 'Why Choose Me?',
+    title: 'What I work with',
     description:
-      'I am a full stack developer and I love to build things. I can also clean your solar panels.',
-    //TODO also need to update the features array in the FeatureSection component
+      'Languages, frameworks, and cloud tools I use to ship web apps and backend services.',
   },
   experience: {
-    // title: 'Education',
-    // intro:
-    //   "I've been coding for a long time, and I am a current student at California State University Fullerton studying Computer Science.",
-    //TODO also need to update the experience array in the ExperienceSection component. This is because of the icons used.
+    title: 'Experience',
+    intro:
+      'Roles spanning AI systems consulting, WooCommerce e-commerce leadership, and full-stack internship work—alongside education in computer science and web development.',
     education: [
       {
-        schoolName: 'California State University Fullerton',
-        degree: 'Bachelor of Science in computer Science',
+        schoolName: 'California State University, Fullerton',
+        degree: 'B.S. Computer Science',
         description:
-          'Computer Science is the study of computational systems and computers. It is a multidisciplinary field that draws on mathematics, logic, and design knowledge to understand how computer systems work and function. Computer Science is a broad field that studies algorithms, data structures, software design, and network design. It is a multidisciplinary field that draws on mathematics, logic, and design knowledge to understand how computer systems work and function.',
-        startDate: '2022',
-        endDate: 'Current',
+          'Bachelor of Science in Computer Science from California State University, Fullerton.',
+        startDate: '',
+        endDate: 'Jan 2026',
         typeofDegree: 'Bachelor Degree',
       },
       {
-        schoolName: 'University of California Los Angeles, Coding Bootcamp',
-        degree: 'Full Stack Web Development',
+        schoolName: 'UCLA Extension',
+        degree: 'Full-Stack Web Development Certificate',
         description:
-          'The Coding Boot Camp at UCLA Extension is a 24-week full-time web development bootcamp.  The program is designed to teach students the skills needed to become a junior web developer.',
-        startDate: '2022',
-        endDate: '2022',
+          'Full-Stack Web Development Certificate from UCLA Extension.',
+        startDate: '',
+        endDate: 'Aug 2022',
         typeofDegree: 'Certificate of Completion',
       },
+    ],
+  },
+  skills: {
+    languages: [
+      'Python',
+      'Go',
+      'TypeScript',
+      'JavaScript',
+      'PHP',
+      'SQL',
+      'HTML',
+      'CSS',
+    ],
+    frontend: [
+      'React',
+      'Next.js',
+      'Tailwind CSS',
+      'WordPress/WooCommerce',
+      'Payload CMS (headless)',
+    ],
+    backend: [
+      'FastAPI',
+      'Django',
+      'Node.js',
+      'Express',
+      'REST APIs',
+      'WebSockets',
+      'GraphQL',
+    ],
+    cloud: [
+      'AWS (Lambda, API Gateway, DynamoDB, S3, Step Functions, Bedrock)',
+      'Docker',
+      'Terraform',
+      'Git',
+      'GitHub Actions',
+      'CI/CD',
+    ],
+    databases: ['PostgreSQL', 'MySQL', 'DynamoDB', 'Redis', 'MongoDB'],
+    testingAi: [
+      'Pytest',
+      'Jest',
+      'Vitest',
+      'Go testing',
+      'security testing',
+      'Anthropic Claude API',
+      'AWS Bedrock',
+      'ElevenLabs API',
     ],
   },
 }

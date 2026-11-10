@@ -1,41 +1,51 @@
-import Image from 'next/image'
 import Head from 'next/head'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { RiLinksLine } from 'react-icons/ri'
+import BriefcaseIcon from '@/images/icons/BriefcaseIcon'
 import siteMetadata from '@/data/siteMetadata'
 
-// TODO: If you want to include the logo of the company, I suggesting importing the svg from Remix-Design's repo: https://github.com/Remix-Design/RemixIcon/tree/master/icons/Logos
-
-// TODO: Add your own work experience here
 const experiences = [
-  // {
-  //   title: '',
-  //   company: '',
-  //   date: '',
-  //   description: [
-  //     'Supervise a team of 100+ employees across all areas of the business, with approximately 60 team members daily',
-  //     'Develop and facilitate daily storewide meetings, workshops, and team training & on-boarding',
-  //     'Created and rolled out business training leading to +50%  business related connections, later being implemented market wide to all retail store',
-  //   ],
-  //   location: 'Vancouver, BC',
-  //   link: { url: 'https://www.apple.com/ca/', label: 'Apple' },
-  //   logo: logoApple,
-  // },
-  // {
-  //   title: 'Genius',
-  //   company: 'Apple',
-  //   date: '2016 - 2018',
-  //   description: [
-  //     'Provided technical support to customers, including troubleshooting, diagnosing, and repairing hardware and software issues',
-  //     'Strong people skills and a knack for problem solving',
-  //     'Maintain composure, provide empathy and customer focus while troubleshooting and solving technical issues',
-  //   ],
-  //   location: 'Vancouver, BC',
-  //   link: { url: 'https://www.apple.com/ca/', label: 'Apple' },
-  //   logo: logoApple,
-  // },
+  {
+    title: 'AI Systems Consultant',
+    company: 'House of Helix LLC',
+    date: 'Aug 2026 – Present',
+    description: [
+      'Design and build AI systems for the company, including LLM-backed agents, prompt and workflow engineering, and internal AI tools that plug into existing business software.',
+      'Build API, database, and CRM integrations that automate lead management, communications, and reporting, owning server configuration, deployment, testing, and documentation.',
+      'Building a server-rendered Next.js wholesale storefront for Smoke Show Labs where licensed cannabis operators price white-label vape products, with volume discounts computed server-side so pricing never reaches the browser.',
+      'Wrote a Zod-validated domain layer over typed fixture repositories so the UI can ship ahead of the backend, with CI lint, type, test, and security checks and a staged release workflow with health checks and rollback.',
+    ],
+    location: 'Los Angeles, CA',
+    link: { url: 'https://github.com/EPW80', label: 'House of Helix LLC' },
+  },
+  {
+    title: 'Full-Stack Developer (Contract)',
+    company: 'Advanced Sequence',
+    date: 'Aug 2026 – Present',
+    description: [
+      'Lead developer for a WooCommerce e-commerce store (WordPress, PHP, JavaScript), owning theme development, checkout and caching fixes, and site-wide SEO and structured data.',
+      'Built a Go affiliate attribution and payout service backed by 299 automated tests, with a paginated third-party API client, reversal and ledger logic, Postmark transactional email, and a durable nightly payout queue.',
+      'Integrated affiliate tracking, AI support chat, and email marketing services, documenting the caching and redirect edge cases that silently break data flow.',
+      'Improved Core Web Vitals by rewriting theme JS and CSS; built a custom mu-plugin for QR redirects with server-side scan counting.',
+    ],
+    location: 'Los Angeles, CA',
+    link: { url: 'https://github.com/EPW80', label: 'Advanced Sequence' },
+  },
+  {
+    title: 'Full-Stack Development Intern',
+    company: 'Cabana Joes Hospitality Products',
+    date: 'Apr 2022 – Aug 2022',
+    description: [
+      'Built an e-commerce platform with 20+ reusable React components and full test coverage, and improved database query speed through indexing and caching.',
+    ],
+    location: 'South Gate, CA',
+    link: {
+      url: 'https://github.com/EPW80',
+      label: 'Cabana Joes Hospitality Products',
+    },
+  },
 ]
 
 export default function Resume() {
@@ -44,8 +54,8 @@ export default function Resume() {
       <Head>
         <title>Experience - {siteMetadata.author}</title>
         <meta
-          name={`Work experience of ${siteMetadata.author}`}
-          content={siteMetadata.experience.title}
+          name="description"
+          content={`Work experience of ${siteMetadata.author}`}
         />
       </Head>
       <SimpleLayout
@@ -53,7 +63,7 @@ export default function Resume() {
         intro={siteMetadata.experience.intro}
       >
         <h2 className="mb-6 text-3xl font-bold tracking-tight text-primaryText-800 dark:text-primaryText-100 sm:text-4xl">
-          {/* Work Experience */}
+          Work Experience
         </h2>
         <ul
           role="list"
@@ -62,27 +72,27 @@ export default function Resume() {
           {experiences.map((experience, index) => (
             <Card key={index}>
               <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-primaryText-800/5 ring-1 ring-primaryText-900/5 dark:border dark:border-primaryText-700/50 dark:bg-primaryText-800 dark:ring-0">
-                <Image
-                  src={experience.logo}
-                  alt={experience.company}
-                  className="h-8 w-8"
-                  unoptimized
-                  width={32}
-                  height={32}
-                />
+                <BriefcaseIcon className="h-6 w-6" />
               </div>
               <h2 className="mt-6 text-base font-semibold text-primaryText-800 dark:text-primaryText-100">
                 <Card.Link href={experience.link.url}>
                   {experience.title} at {experience.company}
                 </Card.Link>
               </h2>
-              <Card.Description>
-                {experience.description.map((item, index) => (
-                  <li className="ml-4 list-disc" key={`description-${index}`}>
+              <p className="relative z-10 mt-2 text-sm text-primaryText-500 dark:text-primaryText-400">
+                {experience.date}
+                {experience.location ? ` · ${experience.location}` : ''}
+              </p>
+              <ul className="relative z-10 mt-2 space-y-2 text-sm text-primaryText-600 dark:text-primaryText-400">
+                {experience.description.map((item, descriptionIndex) => (
+                  <li
+                    className="ml-4 list-disc"
+                    key={`description-${descriptionIndex}`}
+                  >
                     {item}
                   </li>
                 ))}
-              </Card.Description>
+              </ul>
               <p className="relative z-10 mt-6 flex text-sm font-medium text-primaryText-400 transition group-hover:text-accent-500 dark:text-primaryText-200">
                 <RiLinksLine className="h-6 w-6 flex-none" />
                 <span className="ml-2">{experience.link.label}</span>
@@ -101,7 +111,9 @@ export default function Resume() {
             {siteMetadata.experience.education.map((item, index) => (
               <Card key={`education-${index}`}>
                 <p className="text-sm text-primaryText-600 dark:text-primaryText-400">
-                  {item.startDate} - {item.endDate}
+                  {item.startDate
+                    ? `${item.startDate} – ${item.endDate}`
+                    : item.endDate}
                 </p>
                 <div className="mt-2 block">
                   <p className="text-xl font-semibold text-primaryText-800 dark:text-primaryText-100">
