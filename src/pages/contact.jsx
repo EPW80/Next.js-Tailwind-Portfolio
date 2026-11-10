@@ -210,8 +210,8 @@ const Contact = () => {
                   Contact information
                 </h3>
                 <p className="mt-6 max-w-3xl text-base text-white dark:text-slate-800">
-                  Please contact me with any questions or comments you may have.
-                  You can also schedule a service through the form below.
+                  Reach out about full-stack or backend engineering work. Email,
+                  phone, or the form all work.
                 </p>
                 <dl className="mt-8 space-y-6">
                   <dt>

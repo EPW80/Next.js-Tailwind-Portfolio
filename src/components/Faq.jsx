@@ -3,27 +3,26 @@ import { motion } from 'framer-motion'
 
 const faqs = [
   {
-    question: 'Why is it important to clean solar panels?',
+    question: 'What kind of work do you do?',
     answer:
-      'Cleaning solar panels is crucial to maintain their efficiency. Dirt, dust, bird droppings, and other debris can accumulate on the panels and block sunlight, which reduces the amount of electricity they generate. Regular cleaning ensures they continue to function at peak performance.',
+      'I am a full-stack and backend software engineer. I build web apps and backend services in React, Next.js, TypeScript, Python, and Go, and deploy on AWS with Docker and CI/CD.',
   },
   {
-    question: 'Can I use any cleaning agent to clean my solar panels?',
+    question: 'What are you working on lately?',
     answer:
-      "While it might be tempting to use strong cleaning agents, it's recommended to use mild, eco-friendly soap and water. Harsh chemicals could damage the panel's surface or even void the warranty. Additionally, the use of abrasive tools can scratch the panels, reducing their efficiency.",
+      'I am an AI Systems Consultant at House of Helix LLC and a contract full-stack developer at Advanced Sequence, where I lead WooCommerce storefront work and a Go affiliate payout service backed by 299 automated tests.',
   },
   {
-    question: 'How often should I clean my solar panels?',
+    question: 'What is your education background?',
     answer:
-      'The frequency of cleaning depends on several factors such as your location, climate, angle of installation, and amount of dust or debris in your area. However, as a general rule of thumb, checking your panels every few months and cleaning them as needed is a good practice.',
+      'I earned a B.S. in Computer Science from California State University, Fullerton (Jan 2026) and a Full-Stack Web Development Certificate from UCLA Extension (Aug 2022).',
   },
   {
-    question: 'Can I clean the solar panels myself, or should I hire a professional?',
+    question: 'How can I reach you?',
     answer:
-      'While it is possible to clean solar panels yourself, it often involves climbing on the roof which can be risky. Professional cleaners are trained to do this safely and have the right equipment. They are also experienced in identifying potential issues that might not be apparent to the untrained eye. However, if you do decide to do it yourself, always prioritize safety.',
+      'Email erikparrawilliams@tutanota.com, call (323) 559-1224, or use the contact form. You can also find me on GitHub (EPW80) and LinkedIn.',
   },
 ]
-
 
 const Faq = () => {
   return (

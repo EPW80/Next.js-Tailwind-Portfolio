@@ -1,19 +1,35 @@
-import { RiRunLine, RiSignalWifi3Line } from 'react-icons/ri'
+import {
+  RiCloudLine,
+  RiCodeSSlashLine,
+  RiDatabase2Line,
+  RiFlashlightLine,
+} from 'react-icons/ri'
 import siteMetadata from '@/data/siteMetadata'
 
-// TODO: Add your own features here. Make sure to add the icon from Remix-Design's repo:
 const features = [
   {
-    name: 'Solar Panel Cleaning Basics',
+    name: 'Languages & frontend',
     description:
-      'In this module, I will guide you through the proper methods of cleaning solar panels, ensuring that your panels remain efficient and your power generation remains high. Most new solar panel owners need to learn these essential cleaning techniques to realize their panels full potential and longevity.',
-    icon: RiRunLine,
+      'Python, Go, TypeScript, JavaScript, PHP, and SQL, with React, Next.js, Tailwind CSS, WordPress/WooCommerce, and Payload CMS.',
+    icon: RiCodeSSlashLine,
   },
   {
-    name: 'Panel Maintenance',
+    name: 'Backend & APIs',
     description:
-      'I will provide you with the opportunity to master your panel cleaning routine, prepare your panels for optimal power generation, and have a well-maintained, high-performing solar power system.',
-    icon: RiSignalWifi3Line,
+      'FastAPI, Django, Node.js, Express, REST APIs, WebSockets, and GraphQL for services that integrate with product UIs and third-party systems.',
+    icon: RiFlashlightLine,
+  },
+  {
+    name: 'Cloud & DevOps',
+    description:
+      'AWS (Lambda, API Gateway, DynamoDB, S3, Step Functions, Bedrock), Docker, Terraform, Git, GitHub Actions, and CI/CD from design through production.',
+    icon: RiCloudLine,
+  },
+  {
+    name: 'Data, testing & AI',
+    description:
+      'PostgreSQL, MySQL, DynamoDB, Redis, and MongoDB, plus Pytest, Jest, Vitest, Go testing, and AI tooling with Anthropic Claude, AWS Bedrock, and ElevenLabs.',
+    icon: RiDatabase2Line,
   },
 ]
 
@@ -22,9 +38,7 @@ const FeatureSection = () => {
     <div className="pb-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="sm:text-center">
-          <h2 className="text-lg font-semibold leading-8 text-accent-600">
-            
-          </h2>
+          <h2 className="text-lg font-semibold leading-8 text-accent-600"></h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-primaryText-800 dark:text-primaryText-100 sm:text-4xl">
             {siteMetadata.featureSection.title}
           </p>

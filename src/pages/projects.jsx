@@ -11,34 +11,30 @@ import siteMetadata from '@/data/siteMetadata'
 import ecomLogo from '@/images/projects/ecom.svg'
 import bananaLogo from '@/images/projects/bananaApp.svg'
 import supaSnacksLogo from '@/images/projects/supaSnacks.svg'
-import payByFonieLogo from '@/images/projects/payByFonie.svg'
 
-// TODO: Add your own projects here. Logo images from https://heroicons.com/
+// Project copy aligned to Erik Williams' resume. Logos reuse existing assets.
 // Optional `screenshot` (static import) can replace the tasteful placeholder frames.
 const projectsData = [
   {
-    title: 'Shop-shop',
-    description: `Shop Shop is an e-commerce application that allows users to shop for various items, add these products to the shopping cart, manage the shopping cart by increasing and decreasing quantities, check out their purchases and see their order history.`,
+    title: 'Real-Time Chat Analytics Platform',
+    description:
+      'Go WebSocket chat server with a live React dashboard reporting message volume, active users, and response times. Added ElevenLabs text-to-speech voice alerts for unusual traffic, with content-hash audio caching and a text fallback when the monthly budget runs out. Stack: Go, WebSockets, DynamoDB, React, TypeScript, Docker, AWS, ElevenLabs API.',
     logo: ecomLogo,
-    href: 'https://github.com/EPW80/Shop-shop',
+    href: 'https://github.com/EPW80',
   },
   {
-    title: 'Deep Thoughts',
-    description: `A social media app where users can create thoughts, add reactions to other users' thoughts, and add other users to their friend list. Users can also view their own profile with their thoughts listed out, or view other users' profiles with all of their thoughts listed.`,
+    title: 'SugarMenu (in progress)',
+    description:
+      'Lifestyle editorial publication with App Router routes for the home page, seven category fronts, and articles, served from a typed async content repository ready for a CMS adapter. Brand design tokens with self-hosted fonts, per-route metadata, real 404s, a health endpoint, and smoke tests that hit every route on a production build. Stack: Next.js 16, React 19, TypeScript, Node test runner.',
     logo: bananaLogo,
-    href: 'https://github.com/EPW80/Deep-Thoughts',
+    href: 'https://github.com/EPW80',
   },
   {
-    title: 'Pizza Hunt',
-    description: `Pizza Hunt is a progressive web application where users can post pizza recipes and participate in discussion. Pizzas are added through a form input with topping options to choose from or the option to create your own. If the user loses internet connection and hits submit the input will be cached until internet access is available.`,
+    title: 'AgentFlow',
+    description:
+      'Dockerized Python FastAPI service that runs multi-step AI workflows through the Claude and AWS Bedrock APIs, covered by 69 automated tests. Stack: Python, FastAPI, Docker, Anthropic Claude API, AWS Bedrock.',
     logo: supaSnacksLogo,
-    href: 'https://github.com/EPW80/Pizza-Hunt',
-  },
-  {
-    title: 'MERN-Book-Search',
-    description: `This app converts a fully functioning Google Books API search engine built with a RESTful API into a GraphQL API built with Apollo Server. Uses the MERN stack, with a React front end, MongoDB database, and Node.js/Express.js server and API.`,
-    logo: payByFonieLogo,
-    href: 'https://github.com/EPW80/MERN-Book-Search',
+    href: 'https://github.com/EPW80',
   },
 ]
 
@@ -172,11 +168,14 @@ export default function Projects() {
     <>
       <Head>
         <title>Projects - {siteMetadata.author}</title>
-        <meta name="description" content="Past Projects by Erik Williams" />
+        <meta
+          name="description"
+          content="Selected projects by Erik Williams from his resume."
+        />
       </Head>
       <SimpleLayout
-        title="Past Projects"
-        intro="These are some of the projects that I'm most proud of. I've built them to learn new technologies, or to solve a problem that I've encountered."
+        title="Projects"
+        intro="Selected work from my resume: real-time analytics, an editorial Next.js publication, and an AI workflow service."
       >
         <div className="min-w-0 overflow-x-clip">
           <FeaturedProject project={featured} />
